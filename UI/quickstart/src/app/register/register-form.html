@@ -1,0 +1,47 @@
+<div class="container container-body" style="background-image:url('../../../img/denim.png')">
+  <div class="row">
+    <div class="col-md-1 col-lg-1" style="height: 100%;display: block;">
+    </div>
+
+    <div class="col-md-10 col-lg-10" style="height: 100%;display: block;">
+      <form id="myform" #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
+        <!-- Name of the Product-->
+        <div class="form-group">
+          <label for="username">Employee Name :</label>
+          <input name="username" ngModel #username="ngModel" (change)="log(username)"
+                 id="username" type="text" class="form-control" required minlength="3">
+          <div *ngIf="username.touched && username.errors">
+            <div class="alert alert-danger"
+                 *ngIf="username.errors.required">
+              The Name is Required.
+            </div>
+            <div class="alert alert-danger"
+                 *ngIf="username.errors.minlength">
+              Min length is {{username.errors.requiredLength}}.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input name="password" type="password" id="password" ngModel #pswd="ngModel" placeholder="password" required minlength="3">
+          <div class="alert alert-danger" *ngIf="pswd.touched && pswd.errors">
+            Email is Required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="passwordConfirm">Password</label>
+          <input name="passwordConfirm" type="password" id="passwordConfirm" ngModel #pswd="ngModel" placeholder="password" required minlength="3">
+          <div class="alert alert-danger" *ngIf="pswd.touched && pswd.errors">
+            Email is Required.
+          </div>
+        </div>
+
+        <button class="btn btn-primary" style="margin: 10px" type="submit" [disabled]="!myForm.valid">Submit</button>
+      </form>
+    </div>
+    <div class="col-md-1 col-lg-1" style="height: 100%;display: block;">
+    </div>
+  </div>
+</div>
